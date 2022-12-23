@@ -177,12 +177,10 @@ def export_dataloader(exporter_directory, client_type, client_subtype, salesforc
         try:
 
             conn = psycopg2.connect(Postgres_connect)
-
             cur = conn.cursor()
-
             cur.execute(sqlquery)
 
-            with open(csv_name, 'w') as csvfile:
+            with open(csv_name, 'w', newline='') as csvfile:
 
                 writer = csv.writer(csvfile)
                 writer.writerow([x[0] for x in cur.description])  # column headers
@@ -217,7 +215,7 @@ def export_dataloader(exporter_directory, client_type, client_subtype, salesforc
                             column = column.replace(u"\u00B4", "")
 
                             # Normalize to Ascii
-                            column = unicodedata.normalize('NFKD', column).encode('ascii','ignore')
+                            #column = unicodedata.normalize('NFKD', column).encode('ascii','ignore')
 
                         elif not column is None and isinstance(column, float):
 
