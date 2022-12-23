@@ -1,0 +1,13 @@
+.project
+.settings
+.sfdx/
+settings.json
+Export/
+Incoming/
+status/
+*.properties
+key.txt
+Exporter.bat
+*.csv
+~*
+.sfdx/tools/apex.db

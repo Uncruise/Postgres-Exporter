@@ -1,0 +1,7 @@
+project:
+    name: ODBC-Exporter
+    package:
+        name:  ODBC-Exporter
+        api_version: '42.0'
+
+
