@@ -185,16 +185,13 @@ def export_dataloader(exporter_directory, client_type, client_subtype, salesforc
         try:
 
             conn = psycopg2.connect(Postgres_connect)
-            print('Connected to Postgres Service')
 
             cur = conn.cursor()
             cur.execute(sqlquery)
-            print('Executed SQL')
 
             with open(csv_name, 'wb') as csvfile:
 
                 writer = csv.writer(csvfile)
-                print('write row')
                 writer.writerow([x[0] for x in cur.description])  # column headers
 
                 row = cur.fetchone()
@@ -206,19 +203,15 @@ def export_dataloader(exporter_directory, client_type, client_subtype, salesforc
                         if not column is None and isinstance(column, str):
 
                             # Check for newline in string
-                            print('1')
                             column = column.replace("\r", "")
 
                             # Left Double Quotation Mark and Right Double Quoation Mark
-                            print('2')
                             column = column.replace(u"\u201c", "(").replace(u"\u201d", ")")
 
                             # Left Single Quotation Mark and Right Single Quotation Mark
-                            print('3')
                             column = column.replace(u"\u2018", "(").replace(u"\u2019", ")")
 
                             # Quotation Mark
-                            print('4')
                             column = column.replace(u"\u0022", "")
 
                             # Apostrophe
