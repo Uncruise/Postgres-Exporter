@@ -135,7 +135,6 @@ def contains_data(file_name):
 def export_dataloader(exporter_directory, client_type, client_subtype, salesforce_type):
     """Export out of Postgres using SQL Query files"""
 
-    import io
     import csv
     import unicodedata
     import psycopg2
@@ -192,7 +191,7 @@ def export_dataloader(exporter_directory, client_type, client_subtype, salesforc
             cur.execute(sqlquery)
             print('Executed SQL')
 
-            with io.open(csv_name, 'w', newline='') as csvfile:
+            with open(csv_name, 'wb') as csvfile:
 
                 writer = csv.writer(csvfile)
                 print('write row')
@@ -208,7 +207,7 @@ def export_dataloader(exporter_directory, client_type, client_subtype, salesforc
 
                             # Check for newline in string
                             print('1')
-                            column = column.replace(u"\r", "")
+                            column = column.replace("\r", "")
 
                             # Left Double Quotation Mark and Right Double Quoation Mark
                             print('2')
