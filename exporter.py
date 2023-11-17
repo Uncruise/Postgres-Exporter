@@ -177,6 +177,7 @@ def export_dataloader(exporter_directory, client_type, client_subtype, salesforc
         try:
 
             conn = psycopg2.connect(Postgres_connect)
+
             cur = conn.cursor()
             cur.execute(sqlquery)
 
