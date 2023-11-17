@@ -167,6 +167,10 @@ def export_dataloader(exporter_directory, client_type, client_subtype, salesforc
 
         # Get Postgres Connection
         if not client_subtype in file_name:
+
+            message = "Skip file client_subtype: " + client_subtype + ' not in file'
+            print(message)
+
             continue
 
         with open(join(query_path, "..\\Postgres_connect_" + connectionType + ".dat"), 'r') as Postgresconnectfile:
