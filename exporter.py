@@ -135,6 +135,7 @@ def contains_data(file_name):
 def export_dataloader(exporter_directory, client_type, client_subtype, salesforce_type):
     """Export out of Postgres using SQL Query files"""
 
+    import io
     import csv
     import unicodedata
     import psycopg2
@@ -188,7 +189,7 @@ def export_dataloader(exporter_directory, client_type, client_subtype, salesforc
             cur.execute(sqlquery)
             print('Executed SQL')
 
-            with open(csv_name, 'w') as csvfile:
+            with io.open(csv_name, 'w', newline='') as csvfile:
 
                 writer = csv.writer(csvfile)
                 writer.writerow([x[0] for x in cur.description])  # column headers
