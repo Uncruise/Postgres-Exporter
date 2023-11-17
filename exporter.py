@@ -16,8 +16,6 @@ def main():
                "salesforce_type client_type client_emaillist\n")
         return
 
-    print('Incoming parameters - salesforce_type: ' + salesforce_type + ' client_type: ' + client_type + ' client_subtype: ' + client_subtype + ' client_emaillist: ' + client_emaillist)
-
     exporter_root = "C:\\repo\\Postgres-Exporter-Private\\Clients\\{}\\Postgres-Exporter".format(client_type)
     if '-rootdir' in sys.argv:
         exporter_root = sys.argv[sys.argv.index('-rootdir') + 1]
@@ -40,6 +38,7 @@ def main():
         sys.stdout = open(join(exporter_root, '..\\exporter.log'), 'w')
 
     print('Postgres Exporter Startup')
+    print('Incoming parameters - salesforce_type: ' + salesforce_type + ' client_type: ' + client_type + ' client_subtype: ' + client_subtype + ' client_emaillist: ' + client_emaillist)
 
     exporter_directory = join(exporter_root, 'Clients\\' + client_type)
     print("Setting Postgres Exporter Directory: %s" % exporter_directory)
