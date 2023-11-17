@@ -195,6 +195,7 @@ def export_dataloader(exporter_directory, client_type, client_subtype, salesforc
             with io.open(csv_name, 'w', newline='') as csvfile:
 
                 writer = csv.writer(csvfile)
+                print('write row')
                 writer.writerow([x[0] for x in cur.description])  # column headers
 
                 row = cur.fetchone()
