@@ -144,7 +144,7 @@ def export_dataloader(exporter_directory, client_type, client_subtype, salesforc
     from os.path import exists
     from os.path import join
 
-    connectionType = client_subtype
+    connectionType = salesforce_type
     query_path = exporter_directory + "\\Queries"
     csv_path = exporter_directory + "\\Export\\"
     if not exists(csv_path):
@@ -182,9 +182,11 @@ def export_dataloader(exporter_directory, client_type, client_subtype, salesforc
         try:
 
             conn = psycopg2.connect(Postgres_connect)
+            print('Connected to Postgres Service')
 
             cur = conn.cursor()
             cur.execute(sqlquery)
+            print('Executed SQL')
 
             with open(csv_name, 'w', newline='') as csvfile:
 
