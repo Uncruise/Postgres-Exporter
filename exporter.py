@@ -145,6 +145,9 @@ def export_dataloader(exporter_directory, client_type, client_subtype, salesforc
     from os.path import exists
     from os.path import join
 
+    # Override - temp fix so all the Upsert queries run
+    client_subtype = 'Upsert'
+
     connectionType = salesforce_type
     query_path = exporter_directory + "\\Queries"
     csv_path = exporter_directory + "\\Export\\"
@@ -203,15 +206,19 @@ def export_dataloader(exporter_directory, client_type, client_subtype, salesforc
                         if not column is None and isinstance(column, str):
 
                             # Check for newline in string
-                            column = column.replace("\r", "")
+                            print('1')
+                            column = column.replace(u"\r", "")
 
                             # Left Double Quotation Mark and Right Double Quoation Mark
+                            print('2')
                             column = column.replace(u"\u201c", "(").replace(u"\u201d", ")")
 
                             # Left Single Quotation Mark and Right Single Quotation Mark
+                            print('3')
                             column = column.replace(u"\u2018", "(").replace(u"\u2019", ")")
 
                             # Quotation Mark
+                            print('4')
                             column = column.replace(u"\u0022", "")
 
                             # Apostrophe
