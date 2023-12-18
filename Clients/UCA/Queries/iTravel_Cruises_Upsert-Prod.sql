@@ -7,7 +7,8 @@ select
 	cat.lifecycle_status as Closed_Level, 
 	cat.departure_port as Itinerary_Embark, 
 	cat.arrival_port as Itinerary_Disembark, 
-	cat.lifecycle_status as Cruise_LifeCycle
+	cat.lifecycle_status as Cruise_LifeCycle,
+	cat.status as Cruise_Status
 
 from itrvl_rpt.itrvl_cru_catalogue_vw cat 
 	inner join itrvl_rpt.itrvl_cru_itin_defn_vw itin on cat.itin_code = itin.itinerary_code 
